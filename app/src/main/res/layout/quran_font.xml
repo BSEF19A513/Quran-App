@@ -9,8 +9,8 @@
     <TextView
         android:id="@+id/QuranTextView"
         android:layout_width="371dp"
-        android:layout_height="48dp"
-        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
         android:gravity="center"
         android:fontFamily="@font/noorehuda"
         app:layout_constraintBottom_toBottomOf="parent"
