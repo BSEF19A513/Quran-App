@@ -28,13 +28,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Log.d("======", "onItemClick: "+ssp.length+" length");
                 int startIndex = ssp[i];
-                int endIndex = ssp[i+1];
+                int endIndex;
+                if(i+1>=ssp.length)
+                    endIndex = 6349;
+                else
+                    endIndex = ssp[i+1];
+
                 Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                 intent.putExtra("startIndex",startIndex);
                 intent.putExtra("endIndex",endIndex);
                 startActivity(intent);
-//                Log.d("======", "onItemClick: "+startIndex+" "+endIndex);
+
             }
         });
 

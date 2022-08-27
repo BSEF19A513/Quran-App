@@ -3,8 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/add_comment.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/book.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/chrome_reader.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/insert_comment.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/laptop.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/local_library.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/textsms.xml" value="0.2385" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/drawable/voice.xml" value="0.2385" />
         <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/layout/activity_main2.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/layout/header.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/QuranApp/app/src/main/res/menu/main_menu.xml" value="0.23229166666666667" />
       </map>
     </option>
   </component>
