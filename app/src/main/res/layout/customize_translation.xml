@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ArabicQuranTextView"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/noorehuda"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/TranslationTextView"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/jameelnoorinastaleeq"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+</androidx.appcompat.widget.LinearLayoutCompat>
