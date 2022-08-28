@@ -23,7 +23,6 @@ ListView surahView;
         Intent intent = getIntent();
         int startIndex = intent.getIntExtra("startIndex",0);
         int endIndex = intent.getIntExtra("endIndex",0);
-        Log.d("TAG====", "onCreate: "+startIndex+" "+endIndex);
 
 //        int j =0;
         ArrayList<String> surah = new ArrayList<String>();

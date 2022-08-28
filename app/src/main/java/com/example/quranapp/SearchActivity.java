@@ -2,12 +2,14 @@ package com.example.quranapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -41,6 +43,14 @@ public class SearchActivity extends AppCompatActivity {
                    surahModelArrayList = dbHelper.getAllSurahs(searchText.getText().toString());
                    myQuranAdapter QuranAdapter = new myQuranAdapter(SearchActivity.this,surahModelArrayList);
                    surahNameView.setAdapter(QuranAdapter);
+                   surahNameView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                       @Override
+                       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                           Intent intent = new Intent(SearchActivity.this,SurahActivity.class);
+                           intent.putExtra("SurahName",surahModelArrayList.get(i).getSurahNameEnglish());
+                           startActivity(intent);
+                       }
+                   });
             }
             @Override
             public void afterTextChanged(Editable editable) {

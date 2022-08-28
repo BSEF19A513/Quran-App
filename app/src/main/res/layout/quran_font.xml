@@ -8,14 +8,16 @@
 
     <TextView
         android:id="@+id/QuranTextView"
-        android:layout_width="371dp"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginRight="5dp"
         android:fontFamily="@font/noorehuda"
+        android:gravity="center"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />

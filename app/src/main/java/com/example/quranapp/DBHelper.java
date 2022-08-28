@@ -99,23 +99,23 @@ public class DBHelper extends SQLiteOpenHelper {
         cursorCourses.close();
         return surahArrayList;
     }
-//    public void deleteStudent(int id){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        db.delete(STUDENT_TABLE,"StudentID = "+id,null);
-//        db.close();
-//    }
-//    public void updateStudent(String name,String rollNumber,boolean isEnroll,int id){
-//        int enroll=0;
-//        if(isEnroll==true)
-//            enroll = 1;
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("StudentName",name);
-//        contentValues.put("StudentRollNumber",rollNumber);
-//        contentValues.put("IsEnrolled",enroll);
-//        db.update(STUDENT_TABLE,contentValues,STUDENT_ID+"="+id,null);
-//        Log.d("tag=====", "updateStudent: "+name+" "+rollNumber+" "+enroll);
-//        db.close();
-//    }
+    public ArrayList<String> getSurah(String SurahName){
+        ArrayList<String> surahList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SurahID FROM tsurah WHERE SurahNameE = '"+SurahName+"'",null);
+        cursor.moveToFirst();
+        int SurahID = cursor.getInt(0);
+        cursor =
+                db.rawQuery("SELECT ArabicText FROM tayah ta JOIN tsurah ts WHERE ta.SuraID = ts.SurahID AND ts.SurahID = "+SurahID+" ORDER By ta.AyaID",
+                null);
+        if (cursor.moveToFirst()) {
+            do {
+                surahList.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        return surahList;
+    }
+
 
 }
