@@ -7,10 +7,6 @@
             android:icon="@drawable/book"
             android:title="Search" />
 
-        <item
-            android:id="@+id/nav_return"
-            android:icon="@drawable/returrn"
-            android:title="Return" />
 
     </group>
     <item android:title="Translation">
