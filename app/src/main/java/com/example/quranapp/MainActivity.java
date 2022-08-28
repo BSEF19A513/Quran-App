@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         DBHelper dbHelper =
                 new DBHelper(MainActivity.this);
+        dbHelper.hello();
+        dbHelper.addStudent();
         Log.d("=====",
-                "onCreate: "+dbHelper.hello());
+                "onCreate Ayah No "+dbHelper.ayah());
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
