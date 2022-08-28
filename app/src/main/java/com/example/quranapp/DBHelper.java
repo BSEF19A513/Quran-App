@@ -116,6 +116,57 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return surahList;
     }
+    public ArrayList<String> getTranslatedName(String language){
+        ArrayList<String> translatedNameList = new ArrayList<>();
+        String surahName;
+        if(language.equals("urdu"))
+        {
+            surahName = "SurahNameU";
+        }
+        else
+            surahName = "SurahNameE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT "+surahName+" FROM tsurah",null);
+        if (cursor.moveToFirst()) {
+            do {
+                translatedNameList.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        return translatedNameList;
+    }
+    public ArrayList<AyahModel> getTranslatedSurah(String surahName,String language){
+        ArrayList<AyahModel> surahList = new ArrayList<>();
+        String surahname,translation;
+        if(language.equals("urdu"))
+        {
+            surahname = "SurahNameU";
+            translation = "FatehMuhammadJalandhri";
+        }
+        else
+        {
+            surahname = "SurahNameE";
+            translation = "DrMohsinKhan";
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SurahID FROM tsurah WHERE "+surahname+" = '"+surahName+"'",null);
+        cursor.moveToFirst();
+        int SurahID = cursor.getInt(0);
+        cursor =
+                db.rawQuery("SELECT ArabicText,"+translation+" FROM tayah ta JOIN tsurah ts WHERE ta.SuraID = ts.SurahID AND ts.SurahID" +
+                                " = "+SurahID+" ORDER By ta.AyaID",
+                        null);
+        if (cursor.moveToFirst())
+        {
+            do
+            {
+                surahList.add(new AyahModel(cursor.getString(0), cursor.getString(1)));
+            }
+            while (cursor.moveToNext());
+
+        }
+        return surahList;
+    }
 
 
 }

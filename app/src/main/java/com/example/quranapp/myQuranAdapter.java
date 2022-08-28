@@ -24,11 +24,9 @@ public class myQuranAdapter extends ArrayAdapter<SurahModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         SurahModel surahModel = getItem(position);
-        Log.d("====", "getView: "+surahModel.getSurahNameEnglish());
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.surah_names,parent,false);
         TextView SurahText = convertView.findViewById(R.id.surahNamesTextView);
         SurahText.setText(surahModel.getSurahNameEnglish());
-        Log.d("====", "getView: "+surahModel.getSurahNameEnglish());
         return convertView;
     }
 }

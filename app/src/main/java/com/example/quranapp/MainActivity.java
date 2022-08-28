@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+    Intent intent;
     ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.id.nav_search:
                         Toast.makeText(getApplicationContext(),"Book is Clicked",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                        intent = new Intent(MainActivity.this, SearchActivity.class);
                         startActivity(intent);
                         break;
 
@@ -64,14 +65,16 @@ public class MainActivity extends AppCompatActivity {
                         //drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                    case R.id.nav_laptop :
-                        Toast.makeText(getApplicationContext(),"Laptop is clicked",Toast.LENGTH_LONG).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                    case R.id.nav_urdu:
+                        intent = new Intent(MainActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","urdu");
+                        startActivity(intent);
                         break;
 
-                    case R.id.nav_voice :
-                        Toast.makeText(getApplicationContext(),"Voice is clicked",Toast.LENGTH_LONG).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                    case R.id.nav_english:
+                        intent = new Intent(MainActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","english");
+                        startActivity(intent);
                         break;
 
                     case R.id.nav_chrome_reader :

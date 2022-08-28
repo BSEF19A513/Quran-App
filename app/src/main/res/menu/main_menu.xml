@@ -12,17 +12,21 @@
             android:icon="@drawable/returrn"
             android:title="Return" />
 
-        <item
-            android:id="@+id/nav_laptop"
-            android:icon="@drawable/laptop"
-            android:title="Laptop" />
-
-        <item
-            android:id="@+id/nav_voice"
-            android:icon="@drawable/voice"
-            android:title="Voice" />
-
     </group>
+    <item android:title="Translation">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_urdu"
+                    android:icon="@drawable/chrome_reader"
+                    android:title="Urdu" />
+                <item
+                    android:id="@+id/nav_english"
+                    android:icon="@drawable/read_more"
+                    android:title="English" />
+            </group>
+        </menu>
+    </item>
 
 
     <item android:title="Reading">

@@ -23,6 +23,11 @@ public class AyahModel {
         ParaID = paraID;
     }
 
+    public AyahModel(String arabicText, String urduText) {
+        ArabicText = arabicText;
+        UrduText = urduText;
+    }
+
     public int getAyahID() {
         return AyahID;
     }
