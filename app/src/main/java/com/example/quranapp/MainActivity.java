@@ -53,11 +53,10 @@ public class MainActivity extends AppCompatActivity {
             {
                 switch (menuItem.getItemId())
                 {
-                    case R.id.nav_book :
-                        Toast.makeText(getApplicationContext(),"Retur is Clicked",Toast.LENGTH_LONG).show();
-//                        Intent intent = new Intent(RecycleActivity.this, MainActivity.class);
-//                        startActivity(intent);
-                        //drawerLayout.closeDrawer(GravityCompat.START);
+                    case R.id.nav_search:
+                        Toast.makeText(getApplicationContext(),"Book is Clicked",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.nav_return :

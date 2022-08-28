@@ -65,44 +65,40 @@ public class DBHelper extends SQLiteOpenHelper {
         //Hash map, as we did in bundles
 
         db.close();
-        //NullCoumnHack
-        //long insert =
-        //if (insert == -1) { return false; }
-        //else{return true;}
     }
     public ArrayList ayah()
-    {
+           {
         ArrayList list = new ArrayList();
         SQLiteDatabase db =
                 this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM tayah" ,null);
         cursor.moveToFirst();
-        Log.d("====", "column: "+cursor.getString(5));
+        Log.d("====", "column: "+cursor.getColumnCount());
         return list;
     }
-//
-//    public ArrayList<StudentModel> getAllStudents() {
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
-//
-//        ArrayList<StudentModel> studentArrayList = new ArrayList<>();
-//
-//        // moving our cursor to first position.
-//        if (cursorCourses.moveToFirst()) {
-//            do {
-//
-//                studentArrayList.add(new StudentModel(cursorCourses.getInt(0), cursorCourses.getString(1),
-//                        cursorCourses.getString(2),
-//                        cursorCourses.getInt(3) == 1 ? true : false));
-//            } while (cursorCourses.moveToNext());
-//
-//        }
-//
-//        cursorCourses.close();
-//        return studentArrayList;
-//    }
+
+    public ArrayList<SurahModel> getAllSurahs(String name) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM tsurah WHERE SurahNameE Like '%"+name+"%'", null);
+        Log.d("=====", "Name: "+name);
+
+        ArrayList<SurahModel> surahArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorCourses.moveToFirst()) {
+            do {
+
+                surahArrayList.add(new SurahModel(cursorCourses.getInt(0), cursorCourses.getString(1),
+                        cursorCourses.getString(2),cursorCourses.getString(3),cursorCourses.getString(4)));
+            } while (cursorCourses.moveToNext());
+
+        }
+
+        cursorCourses.close();
+        return surahArrayList;
+    }
 //    public void deleteStudent(int id){
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        db.delete(STUDENT_TABLE,"StudentID = "+id,null);
