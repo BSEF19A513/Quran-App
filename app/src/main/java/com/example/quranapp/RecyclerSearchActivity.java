@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,13 +25,15 @@ import java.util.ArrayList;
 public class RecyclerSearchActivity extends AppCompatActivity {
 
     EditText searchText;
-    ListView surahNameView;
+    RecyclerView surahNameRecycleView;
     ArrayList<SurahModel> surahModelArrayList;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     Intent intent;
     ActionBarDrawerToggle toggle;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +96,7 @@ public class RecyclerSearchActivity extends AppCompatActivity {
 
         DBHelper dbHelper = new DBHelper(RecyclerSearchActivity.this);
         searchText = findViewById(R.id.searchText);
-        surahNameView = findViewById(R.id.surahNameView);
+        surahNameRecycleView = findViewById(R.id.surahNameRecyclerView);
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -100,16 +104,17 @@ public class RecyclerSearchActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 surahModelArrayList = dbHelper.getAllSurahs(searchText.getText().toString());
-                myQuranAdapter QuranAdapter = new myQuranAdapter(SearchActivity.this,surahModelArrayList);
-                surahNameView.setAdapter(QuranAdapter);
-                surahNameView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(SearchActivity.this,SurahActivity.class);
-                        intent.putExtra("SurahName",surahModelArrayList.get(i).getSurahNameEnglish());
-                        startActivity(intent);
-                    }
-                });
+                layoutManager = new LinearLayoutManager(RecyclerSearchActivity.this,LinearLayoutManager.VERTICAL,false);
+                surahNameRecycleView.setLayoutManager(layoutManager);
+                surahNameRecycleView.setAdapter(adapter);
+//                surahNameRecycleView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        Intent intent = new Intent(SearchActivity.this,SurahActivity.class);
+//                        intent.putExtra("SurahName",surahModelArrayList.get(i).getSurahNameEnglish());
+//                        startActivity(intent);
+//                    }
+//                });
             }
             @Override
             public void afterTextChanged(Editable editable) {

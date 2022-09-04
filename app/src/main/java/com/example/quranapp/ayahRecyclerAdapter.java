@@ -18,14 +18,14 @@ import java.util.List;
 
 public class ayahRecyclerAdapter extends RecyclerView.Adapter<ayahRecyclerAdapter.MyVH> {
 
-    String[] surahNameList;
-    public ayahRecyclerAdapter(String[] surahName) {
-        this.surahNameList = surahName;
+    ArrayList<SurahModel> surahNameList;
+    public ayahRecyclerAdapter(ArrayList<SurahModel> surahNameList) {
+        this.surahNameList = surahNameList;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ayahRecyclerAdapter.MyVH holder, int position) {
-        holder.surahname.setText(position+1+". "+surahNameList[position]);
+        holder.surahname.setText(position+1+". "+surahNameList.get(position).getSurahNameEnglish());
     }
 
     @NonNull
@@ -33,13 +33,13 @@ public class ayahRecyclerAdapter extends RecyclerView.Adapter<ayahRecyclerAdapte
     public ayahRecyclerAdapter.MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.surah_name_customize, parent, false);
+                .inflate(R.layout.surah_names, parent, false);
         return new MyVH(itemView);
     }
 
     @Override
     public int getItemCount() {
-        return surahNameList.length;
+        return surahNameList.size();
     }
 
 
@@ -47,7 +47,7 @@ public class ayahRecyclerAdapter extends RecyclerView.Adapter<ayahRecyclerAdapte
         TextView surahname;
         public MyVH(@NonNull View itemView) {
             super(itemView);
-            surahname = itemView.findViewById(R.id.surahnameview);
+            surahname = itemView.findViewById(R.id.surahNamesTextView);
         }
     }
 }
