@@ -16,12 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String STUDENT_ID = "StudentID";
-    public static final String STUDENT_NAME = "StudentName";
-    public static final String STUDENT_ROLL = "StudentRollNumber";
-    public static final String STUDENT_ENROLL = "IsEnrolled";
-    public static final String STUDENT_TABLE = "StudentTable";
-
 
 
     public DBHelper(@Nullable Context context) {
@@ -30,10 +24,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //String createTableSTatementOne = "CREATE TABLE CustTable(CustomerID Integer PRIMARY KEY AUTOINCREMENT, " + CUSTOMER_NAME_FIRST + " Text, CustomerAge Int, ActiveCustomer BOOL) ";
-//        String createTableSTatement = "CREATE TABLE " + STUDENT_TABLE + "(" +
-//                STUDENT_ID + " Integer PRIMARY KEY AUTOINCREMENT, " + STUDENT_NAME + " Text, "
-//                + STUDENT_ROLL + " Int, " + STUDENT_ENROLL + " BOOL) ";
         String createTableSTatement =
                 "CREATE TABLE " +
                         "'tayah' ( 'AyaID' INTEGER,'SuraID' INTEGER, 'AyaNo'	INTEGER, 'ArabicText' TEXT, 'FatehMuhammadJalandhri' TEXT, 'MehmoodulHassan' TEXT, 'DrMohsinKhan' TEXT, 'MuftiTaqiUsmani' TEXT, 'RakuID' INTEGER, 'PRakuID' INTEGER, 'ParaID' INTEGER)";
@@ -42,8 +32,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 " CREATE TABLE " +
                         "'tsurah' ( 'SurahID' INTEGER, 'SurahIntro' TEXT, 'SurahNameE' TEXT, 'Nazool' TEXT, 'SurahNameU' TEXT)";
         db.execSQL(createTable2STatement);
-        Log.d("======", "on DB " +
-                "Create:");
     }
 
 
@@ -55,15 +43,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "EXISTS " + "tayah");
         onCreate(db);
     }
-    public String hello()
-    {
-        return "Hello";
-    }
 
     public void  addStudent(){
         SQLiteDatabase db = this.getWritableDatabase();
-        //Hash map, as we did in bundles
-
         db.close();
     }
     public ArrayList ayah()
@@ -73,7 +55,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM tayah" ,null);
         cursor.moveToFirst();
-        Log.d("====", "column: "+cursor.getColumnCount());
         return list;
     }
 
@@ -82,7 +63,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursorCourses = db.rawQuery("SELECT * FROM tsurah WHERE SurahNameE Like '%"+name+"%'", null);
-        Log.d("=====", "Name: "+name);
 
         ArrayList<SurahModel> surahArrayList = new ArrayList<>();
 
@@ -96,7 +76,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         }
 
-        cursorCourses.close();
+        db.close();
         return surahArrayList;
     }
     public ArrayList<String> getSurah(String SurahName){
@@ -114,6 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
+        db.close();
         return surahList;
     }
     public ArrayList<String> getTranslatedName(String language){

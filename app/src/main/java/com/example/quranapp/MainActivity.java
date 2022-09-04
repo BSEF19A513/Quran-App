@@ -42,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         DBHelper dbHelper =
                 new DBHelper(MainActivity.this);
-        dbHelper.hello();
         dbHelper.addStudent();
-        Log.d("=====",
-                "onCreate Ayah No "+dbHelper.ayah());
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -72,10 +69,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
 
-                    case R.id.nav_chrome_reader :
-                        Toast.makeText(getApplicationContext(),"Chrome Reader is clicked",Toast.LENGTH_LONG).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
                 }
 
                 return true;
@@ -93,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Log.d("======", "onItemClick: "+ssp.length+" length");
                 int startIndex = ssp[i];
                 int endIndex;
                 if(i+1>=ssp.length)
@@ -111,4 +103,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }

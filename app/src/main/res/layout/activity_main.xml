@@ -6,7 +6,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:id="@+id/drawer"
 tools:openDrawer="start"
-tools:context=".TranslatedActivity">
+tools:context=".IndexActivity">
 
 <RelativeLayout
     android:layout_width="wrap_content"
@@ -18,26 +18,26 @@ tools:context=".TranslatedActivity">
         android:layout_height="wrap_content"
         android:background="@drawable/color_default"
         app:title="Quran App"
-        app:titleTextColor="@color/black" />
+        app:titleTextColor="@color/black"
+        />
 
-    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".TranslatedActivity">
+        tools:context=".IndexActivity">
 
-        <ListView
-            android:id="@+id/TranslatedListView"
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <ImageView
+            android:layout_width="244dp"
+            android:layout_height="282dp"
+            android:layout_marginTop="124dp"
+            android:src="@drawable/quranimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
 
