@@ -1,6 +1,10 @@
 package com.example.quranapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +12,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
@@ -26,11 +33,57 @@ public class SearchActivity extends AppCompatActivity {
     EditText searchText;
     ListView surahNameView;
     ArrayList<SurahModel> surahModelArrayList;
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    Intent intent;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        navigationView=findViewById(R.id.nav_view);
+        drawerLayout=findViewById(R.id.drawer);
+
+        toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+            {
+                switch (menuItem.getItemId())
+                {
+                    case R.id.nav_search:
+                        intent = new Intent(SearchActivity.this, SearchActivity.class);
+                        startActivity(intent);
+                        break;
+
+
+                    case R.id.nav_urdu:
+                        intent = new Intent(SearchActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","urdu");
+                        startActivity(intent);
+                        break;
+
+                    case R.id.nav_english:
+                        intent = new Intent(SearchActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","english");
+                        startActivity(intent);
+                        break;
+
+                }
+
+                return true;
+            }
+        });
+
         DBHelper dbHelper = new DBHelper(SearchActivity.this);
         searchText = findViewById(R.id.searchText);
         surahNameView = findViewById(R.id.surahNameView);
