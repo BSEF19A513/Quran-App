@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -51,15 +52,29 @@ public class TranslatedActivity extends AppCompatActivity {
                         break;
 
 
-                    case R.id.nav_urdu:
+                    case R.id.urdu_translation1:
                         intent2 = new Intent(TranslatedActivity.this,TranslationActivity.class);
                         intent2.putExtra("Language","urdu");
+                        intent2.putExtra("Version","Fateh Muhammad Jalandhri");
+                        startActivity(intent2);
+                        break;
+                    case R.id.urdu_translation2:
+                        intent2 = new Intent(TranslatedActivity.this,TranslationActivity.class);
+                        intent2.putExtra("Language","urdu");
+                        intent2.putExtra("Version","Mehmood ul Hassan");
                         startActivity(intent2);
                         break;
 
-                    case R.id.nav_english:
+                    case R.id.english_translation1:
                         intent2 = new Intent(TranslatedActivity.this,TranslationActivity.class);
                         intent2.putExtra("Language","english");
+                        intent2.putExtra("Version","Dr Mohsin Khan");
+                        startActivity(intent2);
+                        break;
+                    case R.id.english_translation2:
+                        intent2 = new Intent(TranslatedActivity.this,TranslationActivity.class);
+                        intent2.putExtra("Language","english");
+                        intent2.putExtra("Version","Mufti Taqi Usmani");
                         startActivity(intent2);
                         break;
 
@@ -72,8 +87,10 @@ public class TranslatedActivity extends AppCompatActivity {
         intent = getIntent();
         String surahName = intent.getStringExtra("surahName");
         String language = intent.getStringExtra("language");
+        String version = intent.getStringExtra("version");
+        Log.d("=======", "onCreatelanguage: "+version);
         DBHelper dbHelper = new DBHelper(TranslatedActivity.this);
-        ArrayList<AyahModel> Ayahlist = dbHelper.getTranslatedSurah(surahName,language);
+        ArrayList<AyahModel> Ayahlist = dbHelper.getTranslatedSurah(surahName,language,version);
         myTranslationAdapter adapter = new myTranslationAdapter(TranslatedActivity.this,Ayahlist);
         translatedView.setAdapter(adapter);
 

@@ -6,22 +6,36 @@
             android:id="@+id/nav_search"
             android:icon="@drawable/book"
             android:title="Search" />
-
-
     </group>
-    <item android:title="Translation">
+    <item android:title="Urdu">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_urdu"
+                    android:id="@+id/urdu_translation1"
                     android:icon="@drawable/chrome_reader"
-                    android:title="Urdu" />
+                    android:title="Fateh Muhammad Jalandhri" />
                 <item
-                    android:id="@+id/nav_english"
+                    android:id="@+id/urdu_translation2"
                     android:icon="@drawable/read_more"
-                    android:title="English" />
+                    android:title="Mehmood ul Hassan" />
             </group>
         </menu>
+
+    </item>
+    <item android:title="English">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/english_translation1"
+                    android:icon="@drawable/chrome_reader"
+                    android:title="Dr Mohsin Khan" />
+                <item
+                    android:id="@+id/english_translation2"
+                    android:icon="@drawable/read_more"
+                    android:title="Mufti Taqi Usmani" />
+            </group>
+        </menu>
+
     </item>
     
 

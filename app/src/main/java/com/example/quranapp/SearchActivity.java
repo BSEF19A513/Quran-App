@@ -66,15 +66,29 @@ public class SearchActivity extends AppCompatActivity {
                         break;
 
 
-                    case R.id.nav_urdu:
+                    case R.id.urdu_translation1:
                         intent = new Intent(SearchActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","urdu");
+                        intent.putExtra("Version","Fateh Muhammad Jalandhri");
+                        startActivity(intent);
+                        break;
+                    case R.id.urdu_translation2:
+                        intent = new Intent(SearchActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","urdu");
+                        intent.putExtra("Version","Mehmood ul Hassan");
                         startActivity(intent);
                         break;
 
-                    case R.id.nav_english:
+                    case R.id.english_translation1:
                         intent = new Intent(SearchActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","english");
+                        intent.putExtra("Version","Dr Mohsin Khan");
+                        startActivity(intent);
+                        break;
+                    case R.id.english_translation2:
+                        intent = new Intent(SearchActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","english");
+                        intent.putExtra("Version","Mufti Taqi Usmani");
                         startActivity(intent);
                         break;
 

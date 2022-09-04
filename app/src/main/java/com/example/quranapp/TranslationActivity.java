@@ -48,20 +48,34 @@ public class TranslationActivity extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.nav_search:
-                        intent2 = new Intent(TranslationActivity.this, SearchActivity.class);
-                        startActivity(intent2);
-                        break;
-
-
-                    case R.id.nav_urdu:
-                        intent2 = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent2.putExtra("Language","urdu");
+                        intent = new Intent(TranslationActivity.this, SearchActivity.class);
                         startActivity(intent);
                         break;
 
-                    case R.id.nav_english:
-                        intent2 = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent2.putExtra("Language","english");
+
+                    case R.id.urdu_translation1:
+                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","urdu");
+                        intent.putExtra("Version","Fateh Muhammad Jalandhri");
+                        startActivity(intent);
+                        break;
+                    case R.id.urdu_translation2:
+                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","urdu");
+                        intent.putExtra("Version","Mehmood ul Hassan");
+                        startActivity(intent);
+                        break;
+
+                    case R.id.english_translation1:
+                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","english");
+                        intent.putExtra("Version","Dr Mohsin Khan");
+                        startActivity(intent);
+                        break;
+                    case R.id.english_translation2:
+                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                        intent.putExtra("Language","english");
+                        intent.putExtra("Version","Mufti Taqi Usmani");
                         startActivity(intent);
                         break;
 
@@ -73,6 +87,7 @@ public class TranslationActivity extends AppCompatActivity {
         translatedName = findViewById(R.id.translatedNameView);
         intent = getIntent();
         String language = intent.getStringExtra("Language");
+        String version = intent.getStringExtra("Version");
         DBHelper dbHelper = new DBHelper(TranslationActivity.this);
         ArrayList<String> surahNameList = dbHelper.getTranslatedName(language);
         ArrayAdapter adapter = new ArrayAdapter(TranslationActivity.this, android.R.layout.simple_list_item_1,surahNameList);
@@ -83,6 +98,7 @@ public class TranslationActivity extends AppCompatActivity {
                 intent = new Intent(TranslationActivity.this,TranslatedActivity.class);
                 intent.putExtra("surahName",surahNameList.get(i));
                 intent.putExtra("language",language);
+                intent.putExtra("version",version);
                 startActivity(intent);
             }
         });

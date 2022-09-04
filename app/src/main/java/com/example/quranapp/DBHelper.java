@@ -116,18 +116,28 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return translatedNameList;
     }
-    public ArrayList<AyahModel> getTranslatedSurah(String surahName,String language){
+    public ArrayList<AyahModel> getTranslatedSurah(String surahName,String language,String version){
         ArrayList<AyahModel> surahList = new ArrayList<>();
         String surahname,translation;
-        if(language.equals("urdu"))
+        if(language.equals("urdu")&&version.equals("Fateh Muhammad Jalandhri"))
         {
             surahname = "SurahNameU";
             translation = "FatehMuhammadJalandhri";
         }
-        else
+        else if(language.equals("urdu")&&version.equals("Mehmood ul Hassan"))
+        {
+            surahname = "SurahNameU";
+            translation = "MehmoodulHassan";
+        }
+        else if(language.equals("english")&&version.equals("Dr Mohsin Khan"))
         {
             surahname = "SurahNameE";
             translation = "DrMohsinKhan";
+        }
+        else
+        {
+            surahname = "SurahNameE";
+            translation = "MuftiTaqiUsmani";
         }
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT SurahID FROM tsurah WHERE "+surahname+" = '"+surahName+"'",null);
