@@ -92,18 +92,15 @@ public class RecyclerActivity2 extends AppCompatActivity {
         int startIndex = intent.getIntExtra("startIndex",0);
         int endIndex = intent.getIntExtra("endIndex",0);
 
-//        ArrayList<String> surah = new ArrayList<String>();
-        String [] surah = new String[endIndex-startIndex];
-        int j;
-        int i = startIndex-1;
-        for (j = 0; i < endIndex-1; j++) {
-            surah[j] = quranText[i];
-            i++;
+        ArrayList<String> surah = new ArrayList<String>();
+        for (int i = startIndex-1; i < endIndex-1; i++) {
+            surah.add(quranText[i]);
         }
 
         recyclerView = findViewById(R.id.recyclerViewAyah);
-        adapter = new surahNameRecyclerAdapter(surah);
+        adapter = new QuranRecyclerAdapter(surah);
         layoutManager = new LinearLayoutManager(RecyclerActivity2.this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
     }
