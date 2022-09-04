@@ -90,12 +90,10 @@ ListView surahView;
         int startIndex = intent.getIntExtra("startIndex",0);
         int endIndex = intent.getIntExtra("endIndex",0);
 
-//        int j =0;
         ArrayList<String> surah = new ArrayList<String>();
         for (int i = startIndex-1; i < endIndex-1; i++) {
             surah.add(quranText[i]);
         }
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity2.this, android.R.layout.simple_list_item_1,surah);
         myAdapter arrayAdapter = new myAdapter(MainActivity2.this,surah);
         surahView.setAdapter(arrayAdapter);
 

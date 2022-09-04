@@ -33,7 +33,7 @@ public class ayahRecyclerAdapter extends RecyclerView.Adapter<ayahRecyclerAdapte
     public ayahRecyclerAdapter.MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.surah_names, parent, false);
+                .inflate(R.layout.surah_name_recycle, parent, false);
         return new MyVH(itemView);
     }
 

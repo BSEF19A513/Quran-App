@@ -1,5 +1,6 @@
 package com.example.quranapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class surahNameRecyclerAdapter extends RecyclerView.Adapter<surahNameRecy
     @Override
     public void onBindViewHolder(@NonNull surahNameRecyclerAdapter.MyVH holder, int position) {
         holder.surahname.setText(position+1+". "+surahNameList[position]);
+//        holder.surahname.setText(surahNameList[position]);
     }
 
     @Override

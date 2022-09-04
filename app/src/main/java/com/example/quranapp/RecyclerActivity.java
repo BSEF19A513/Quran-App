@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,6 +28,7 @@ public class RecyclerActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     Intent intent;
+    int[] ssp;
     ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class RecyclerActivity extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.nav_search:
-                        intent = new Intent(RecyclerActivity.this, SearchActivity.class);
+                        intent = new Intent(RecyclerActivity.this, RecyclerSearchActivity.class);
                         startActivity(intent);
                         break;
 
@@ -89,11 +92,28 @@ public class RecyclerActivity extends AppCompatActivity {
         QDH obj = new QDH();
         String[] surahNames=obj.englishSurahNames;
 
-        int[] ssp = obj.SSP;
+        ssp = obj.SSP;
         adapter = new surahNameRecyclerAdapter(surahNames);
         layoutManager = new LinearLayoutManager(RecyclerActivity.this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+    }
+    public void surahOnClick(View view) {
+        TextView surahname = view.findViewById(R.id.surahnameview);
+        String name = surahname.getText().toString();
+        String[] tokens = name.split(". ");
+        int index = Integer.parseInt(tokens[0]);
+        int startIndex = ssp[index-1];
+        int endIndex;
+        if(index>=ssp.length)
+            endIndex = 6349;
+        else
+            endIndex = ssp[index];
+
+        Intent intent = new Intent(RecyclerActivity.this,RecyclerActivity2.class);
+        intent.putExtra("startIndex",startIndex);
+        intent.putExtra("endIndex",endIndex);
+        startActivity(intent);
     }
 }

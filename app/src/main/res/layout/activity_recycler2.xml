@@ -28,7 +28,7 @@
             tools:context=".RecyclerActivity2">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recylerViewAyah"
+                android:id="@+id/recyclerViewAyah"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
