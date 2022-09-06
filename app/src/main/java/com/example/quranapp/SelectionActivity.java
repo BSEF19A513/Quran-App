@@ -15,12 +15,14 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public void listBtnOnClick(View view) {
-        Intent intent = new Intent(SelectionActivity.this,MainActivity.class);
+        Intent intent = new Intent(SelectionActivity.this,ChoiceActivity.class);
+        intent.putExtra("view","listview");
         startActivity(intent);
     }
 
     public void recyclerBtnOnClick(View view) {
-        Intent intent = new Intent(SelectionActivity.this,RecyclerActivity.class);
+        Intent intent = new Intent(SelectionActivity.this,ChoiceActivity.class);
+        intent.putExtra("view","recyclerview");
         startActivity(intent);
     }
 }

@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         surahNamesView = findViewById(R.id.surahNamesView);
+        Intent intent = getIntent();
+        String recite = intent.getStringExtra("recite");
+        if (recite.equals("surah"))
+        {
         QDH obj = new QDH();
         String[] surahNames=obj.englishSurahNames;
 
@@ -110,6 +114,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        }
+        else if(recite.equals("parah"))
+        {
+            QDH obj = new QDH();
+            String[] parahNames=obj.englishParahName;
+
+            int[] psp = obj.PSP;
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1
+                    ,parahNames);
+            surahNamesView.setAdapter(arrayAdapter);
+            surahNamesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    int startIndex = psp[i];
+                    int endIndex;
+                    if(i+1>=psp.length)
+                        endIndex = 6349;
+                    else
+                        endIndex = psp[i+1];
+
+                    Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                    intent.putExtra("startIndex",startIndex);
+                    intent.putExtra("endIndex",endIndex);
+                    startActivity(intent);
+
+                }
+            });
+        }
 
 
     }

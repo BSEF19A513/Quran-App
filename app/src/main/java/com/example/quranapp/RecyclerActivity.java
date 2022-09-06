@@ -25,7 +25,8 @@ public class RecyclerActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     Intent intent;
-    int[] ssp;
+    String recite;
+    int[] ssp,psp;
     ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,31 +87,66 @@ public class RecyclerActivity extends AppCompatActivity {
             }
         });
         recyclerView = findViewById(R.id.recylerViewSurah);
-        QDH obj = new QDH();
-        String[] surahNames=obj.englishSurahNames;
+        Intent intent = getIntent();
+        recite = intent.getStringExtra("recite");
+        if(recite.equals("surah"))
+        {
+            QDH obj = new QDH();
+            String[] surahNames=obj.englishSurahNames;
 
-        ssp = obj.SSP;
-        adapter = new surahNameRecyclerAdapter(surahNames);
-        layoutManager = new LinearLayoutManager(RecyclerActivity.this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+            ssp = obj.SSP;
+            adapter = new surahNameRecyclerAdapter(surahNames);
+            layoutManager = new LinearLayoutManager(RecyclerActivity.this,LinearLayoutManager.VERTICAL,false);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
+        else if(recite.equals("parah"))
+        {
+            QDH obj = new QDH();
+            String[] surahNames=obj.englishParahName;
+
+            psp = obj.PSP;
+            adapter = new surahNameRecyclerAdapter(surahNames);
+            layoutManager = new LinearLayoutManager(RecyclerActivity.this,LinearLayoutManager.VERTICAL,false);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
 
     }
     public void surahOnClick(View view) {
-        TextView surahname = view.findViewById(R.id.surahnameview);
-        String name = surahname.getText().toString();
-        String[] tokens = name.split(". ");
-        int index = Integer.parseInt(tokens[0]);
-        int startIndex = ssp[index-1];
-        int endIndex;
-        if(index>=ssp.length)
-            endIndex = 6349;
-        else
-            endIndex = ssp[index];
-
-        Intent intent = new Intent(RecyclerActivity.this,RecyclerActivity2.class);
-        intent.putExtra("startIndex",startIndex);
-        intent.putExtra("endIndex",endIndex);
-        startActivity(intent);
+        if(recite.equals("surah"))
+        {
+            TextView surahname = view.findViewById(R.id.surahnameview);
+            String name = surahname.getText().toString();
+            String[] tokens = name.split(". ");
+            int index = Integer.parseInt(tokens[0]);
+            int startIndex = ssp[index-1];
+            int endIndex;
+            if(index>=ssp.length)
+                endIndex = 6349;
+            else
+                endIndex = ssp[index];
+            Intent intent = new Intent(RecyclerActivity.this,RecyclerActivity2.class);
+            intent.putExtra("startIndex",startIndex);
+            intent.putExtra("endIndex",endIndex);
+            startActivity(intent);
+        }
+        else if(recite.equals("parah"))
+        {
+            TextView parahname = view.findViewById(R.id.surahnameview);
+            String name = parahname.getText().toString();
+            String[] tokens = name.split(". ");
+            int index = Integer.parseInt(tokens[0]);
+            int startIndex = psp[index-1];
+            int endIndex;
+            if(index>=psp.length)
+                endIndex = 6349;
+            else
+                endIndex = psp[index];
+            Intent intent = new Intent(RecyclerActivity.this,RecyclerActivity2.class);
+            intent.putExtra("startIndex",startIndex);
+            intent.putExtra("endIndex",endIndex);
+            startActivity(intent);
+        }
     }
 }

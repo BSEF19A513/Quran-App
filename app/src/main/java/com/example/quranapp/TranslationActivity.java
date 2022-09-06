@@ -32,6 +32,9 @@ public class TranslationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translation);
+        intent = getIntent();
+        String language = intent.getStringExtra("Language");
+        String version = intent.getStringExtra("Version");
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,18 +58,60 @@ public class TranslationActivity extends AppCompatActivity {
 
 
                     case R.id.urdu_translation1:
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        if(language.equals("urdu")&&version.equals("Fateh Muhammad Jalandhri"))
+                        {
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
+                        else
+                        {
+                            intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                            intent.putExtra("Language","urdu");
+                            intent.putExtra("Version","Fateh Muhammad Jalandhri");
+                            startActivity(intent);
+                        }
                         break;
                     case R.id.urdu_translation2:
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        if(language.equals("urdu")&&version.equals("Mehmood ul Hassan"))
+                        {
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
+                        else
+                        {
+                            intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                            intent.putExtra("Language","urdu") ;
+                            intent.putExtra("Version","Mehmood ul Hassan");
+                            startActivity(intent);
+                        }
                         break;
 
                     case R.id.english_translation1:
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        if(language.equals("english")&&version.equals("Dr Mohsin Khan"))
+                        {
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
+                        else
+                        {
+                            intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                            intent.putExtra("Language","english");
+                            intent.putExtra("Version","Dr Mohsin Khan");
+                            startActivity(intent);
+
+                        }
                         break;
                     case R.id.english_translation2:
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        if(language.equals("english")&&version.equals("Mufti Taqi Usmani"))
+                        {
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
+                        else
+                        {
+                            intent = new Intent(TranslationActivity.this,TranslationActivity.class);
+                            intent.putExtra("Language","english");
+                            intent.putExtra("Version","Mufti Taqi Usmani");
+                            startActivity(intent);
+                        }
                         break;
+
 
                 }
 
@@ -74,9 +119,6 @@ public class TranslationActivity extends AppCompatActivity {
             }
         });
         translatedName = findViewById(R.id.translatedNameView);
-        intent = getIntent();
-        String language = intent.getStringExtra("Language");
-        String version = intent.getStringExtra("Version");
         DBHelper dbHelper = new DBHelper(TranslationActivity.this);
         ArrayList<String> surahNameList = dbHelper.getTranslatedName(language);
         ArrayAdapter adapter = new ArrayAdapter(TranslationActivity.this, android.R.layout.simple_list_item_1,surahNameList);
