@@ -66,26 +66,26 @@ public class RecyclerSearchActivity extends AppCompatActivity {
 
 
                     case R.id.urdu_translation1:
-                        intent = new Intent(RecyclerSearchActivity.this,TranslationActivity.class);
+                        intent = new Intent(RecyclerSearchActivity.this,RecyclerTranslationActivity.class);
                         intent.putExtra("Language","urdu");
                         intent.putExtra("Version","Fateh Muhammad Jalandhri");
                         startActivity(intent);
                         break;
                     case R.id.urdu_translation2:
-                        intent = new Intent(RecyclerSearchActivity.this,TranslationActivity.class);
+                        intent = new Intent(RecyclerSearchActivity.this,RecyclerTranslationActivity.class);
                         intent.putExtra("Language","urdu") ;
                         intent.putExtra("Version","Mehmood ul Hassan");
                         startActivity(intent);
                         break;
 
                     case R.id.english_translation1:
-                        intent = new Intent(RecyclerSearchActivity.this,TranslationActivity.class);
+                        intent = new Intent(RecyclerSearchActivity.this,RecyclerTranslationActivity.class);
                         intent.putExtra("Language","english");
                         intent.putExtra("Version","Dr Mohsin Khan");
                         startActivity(intent);
                         break;
                     case R.id.english_translation2:
-                        intent = new Intent(RecyclerSearchActivity.this,TranslationActivity.class);
+                        intent = new Intent(RecyclerSearchActivity.this,RecyclerTranslationActivity.class);
                         intent.putExtra("Language","english");
                         intent.putExtra("Version","Mufti Taqi Usmani");
                         startActivity(intent);

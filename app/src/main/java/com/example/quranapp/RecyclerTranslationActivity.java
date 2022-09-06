@@ -4,23 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class RecyclerTranslationActivity extends AppCompatActivity {
     RecyclerView translatedName;
@@ -62,29 +57,17 @@ public class RecyclerTranslationActivity extends AppCompatActivity {
 
 
                     case R.id.urdu_translation1:
-                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","urdu");
-                        intent.putExtra("Version","Fateh Muhammad Jalandhri");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.urdu_translation2:
-                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","urdu");
-                        intent.putExtra("Version","Mehmood ul Hassan");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.english_translation1:
-                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","english");
-                        intent.putExtra("Version","Dr Mohsin Khan");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.english_translation2:
-                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","english");
-                        intent.putExtra("Version","Mufti Taqi Usmani");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -54,29 +55,17 @@ public class TranslationActivity extends AppCompatActivity {
 
 
                     case R.id.urdu_translation1:
-                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","urdu");
-                        intent.putExtra("Version","Fateh Muhammad Jalandhri");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.urdu_translation2:
-                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","urdu");
-                        intent.putExtra("Version","Mehmood ul Hassan");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.english_translation1:
-                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","english");
-                        intent.putExtra("Version","Dr Mohsin Khan");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.english_translation2:
-                        intent = new Intent(TranslationActivity.this,TranslationActivity.class);
-                        intent.putExtra("Language","english");
-                        intent.putExtra("Version","Mufti Taqi Usmani");
-                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                 }

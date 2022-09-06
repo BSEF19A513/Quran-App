@@ -58,7 +58,8 @@ public class RecyclerSearchActivity2 extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_search:
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        intent = new Intent(RecyclerSearchActivity2.this, RecyclerSearchActivity.class);
+                        startActivity(intent);
                         break;
 
 
