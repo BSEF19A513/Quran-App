@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="390dp"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginRight="10dp"
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:id="@+id/surahnameview"
+        android:layout_marginRight="20dp"
         android:onClick="surahOnClick"
-        android:layout_marginLeft="5dp"
         android:fontFamily="@font/jameelnoorinastaleeq">
 
     </TextView>

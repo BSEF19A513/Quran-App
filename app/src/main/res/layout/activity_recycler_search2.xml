@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer"
     tools:openDrawer="start"
-    tools:context=".RecyclerActivity2">
+    tools:context=".RecyclerSearchActivity2">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -26,10 +26,10 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:orientation="vertical"
-            tools:context=".RecyclerActivity2">
+            tools:context=".RecyclerSearchActivity2">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewAyah"
+                android:id="@+id/recyclerViewQuran"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -129,6 +129,14 @@ public class RecyclerSearchActivity extends AppCompatActivity {
 
     public void itemOnClick(View view) {
         TextView surahname = view.findViewById(R.id.surahNamesTextView);
-        Log.d("=======", "itemOnClick: "+surahname.getText().toString());
+        String name = surahname.getText().toString();
+        String[] tokens = name.split(" ");
+        Log.d("=======", "itemOnClick: token length: "+tokens.length);
+        String surahName = tokens[1];
+
+        Log.d("=======", "itemOnClick: SurahName: "+surahName);
+        Intent intent = new Intent(RecyclerSearchActivity.this,RecyclerSearchActivity2.class);
+        intent.putExtra("surahName",surahName);
+        startActivity(intent);
     }
 }

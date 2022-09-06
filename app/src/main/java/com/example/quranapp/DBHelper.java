@@ -82,8 +82,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> getSurah(String SurahName){
         ArrayList<String> surahList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SurahID FROM tsurah WHERE SurahNameE = '"+SurahName+"'",null);
+        Cursor cursor = db.rawQuery("SELECT SurahID FROM tsurah WHERE SurahNameE LIKE '%"+SurahName+"%'",null);
         cursor.moveToFirst();
+
         int SurahID = cursor.getInt(0);
         cursor =
                 db.rawQuery("SELECT ArabicText FROM tayah ta JOIN tsurah ts WHERE ta.SuraID = ts.SurahID AND ts.SurahID = "+SurahID+" ORDER By ta.AyaID",
