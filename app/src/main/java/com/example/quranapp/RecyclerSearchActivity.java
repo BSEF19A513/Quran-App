@@ -131,10 +131,8 @@ public class RecyclerSearchActivity extends AppCompatActivity {
         TextView surahname = view.findViewById(R.id.surahNamesTextView);
         String name = surahname.getText().toString();
         String[] tokens = name.split(" ");
-        Log.d("=======", "itemOnClick: token length: "+tokens.length);
         String surahName = tokens[1];
 
-        Log.d("=======", "itemOnClick: SurahName: "+surahName);
         Intent intent = new Intent(RecyclerSearchActivity.this,RecyclerSearchActivity2.class);
         intent.putExtra("surahName",surahName);
         startActivity(intent);

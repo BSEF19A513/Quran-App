@@ -117,6 +117,27 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return translatedNameList;
     }
+    public String[] getTranslatedStringName(String language){
+        String[] translatedNameList = new String[114];
+        String surahName;
+        if(language.equals("urdu"))
+        {
+            surahName = "SurahNameU";
+        }
+        else
+            surahName = "SurahNameE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT "+surahName+" FROM tsurah",null);
+        int i = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                translatedNameList[i] = cursor.getString(0);
+                i++;
+            } while (cursor.moveToNext());
+
+        }
+        return translatedNameList;
+    }
     public ArrayList<AyahModel> getTranslatedSurah(String surahName,String language,String version){
         ArrayList<AyahModel> surahList = new ArrayList<>();
         String surahname,translation;

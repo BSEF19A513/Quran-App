@@ -13,28 +13,32 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class RecyclerActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+public class RecyclerTranslationActivity extends AppCompatActivity {
+    RecyclerView translatedName;
     RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    String[] surahNameList;
+    String language, version;
+    Intent intent;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    Intent intent;
-    int[] ssp;
+    Intent intent2;
     ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler);
-
+        setContentView(R.layout.activity_recycler_translation);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -52,32 +56,32 @@ public class RecyclerActivity extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.nav_search:
-                        intent = new Intent(RecyclerActivity.this, RecyclerSearchActivity.class);
+                        intent = new Intent(RecyclerTranslationActivity.this, SearchActivity.class);
                         startActivity(intent);
                         break;
 
 
                     case R.id.urdu_translation1:
-                        intent = new Intent(RecyclerActivity.this,RecyclerTranslationActivity.class);
+                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","urdu");
                         intent.putExtra("Version","Fateh Muhammad Jalandhri");
                         startActivity(intent);
                         break;
                     case R.id.urdu_translation2:
-                        intent = new Intent(RecyclerActivity.this,RecyclerTranslationActivity.class);
+                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","urdu");
                         intent.putExtra("Version","Mehmood ul Hassan");
                         startActivity(intent);
                         break;
 
                     case R.id.english_translation1:
-                        intent = new Intent(RecyclerActivity.this,RecyclerTranslationActivity.class);
+                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","english");
                         intent.putExtra("Version","Dr Mohsin Khan");
                         startActivity(intent);
                         break;
                     case R.id.english_translation2:
-                        intent = new Intent(RecyclerActivity.this,RecyclerTranslationActivity.class);
+                        intent = new Intent(RecyclerTranslationActivity.this,TranslationActivity.class);
                         intent.putExtra("Language","english");
                         intent.putExtra("Version","Mufti Taqi Usmani");
                         startActivity(intent);
@@ -88,15 +92,26 @@ public class RecyclerActivity extends AppCompatActivity {
                 return true;
             }
         });
-        recyclerView = findViewById(R.id.recylerViewSurah);
-        QDH obj = new QDH();
-        String[] surahNames=obj.englishSurahNames;
-
-        ssp = obj.SSP;
-        adapter = new surahNameRecyclerAdapter(surahNames);
-        layoutManager = new LinearLayoutManager(RecyclerActivity.this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        translatedName = findViewById(R.id.recyclerTranslatedNameView);
+        intent = getIntent();
+        language = intent.getStringExtra("Language");
+        version = intent.getStringExtra("Version");
+        DBHelper dbHelper = new DBHelper(RecyclerTranslationActivity.this);
+        surahNameList = dbHelper.getTranslatedStringName(language);
+        adapter = new surahNameRecyclerAdapter(surahNameList);
+        layoutManager = new LinearLayoutManager(RecyclerTranslationActivity.this,LinearLayoutManager.VERTICAL,false);
+        translatedName.setLayoutManager(layoutManager);
+        translatedName.setAdapter(adapter);
+//        translatedName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                intent = new Intent(TranslationActivity.this,TranslatedActivity.class);
+//                intent.putExtra("surahName",surahNameList.get(i));
+//                intent.putExtra("language",language);
+//                intent.putExtra("version",version);
+//                startActivity(intent);
+//            }
+//        });
 
     }
     public void surahOnClick(View view) {
@@ -104,16 +119,12 @@ public class RecyclerActivity extends AppCompatActivity {
         String name = surahname.getText().toString();
         String[] tokens = name.split(". ");
         int index = Integer.parseInt(tokens[0]);
-        int startIndex = ssp[index-1];
-        int endIndex;
-        if(index>=ssp.length)
-            endIndex = 6349;
-        else
-            endIndex = ssp[index];
-
-        Intent intent = new Intent(RecyclerActivity.this,RecyclerActivity2.class);
-        intent.putExtra("startIndex",startIndex);
-        intent.putExtra("endIndex",endIndex);
+        intent = new Intent(RecyclerTranslationActivity.this,RecyclerTranslatedActivity.class);
+        intent.putExtra("surahName",surahNameList[index-1]);
+        intent.putExtra("language",language);
+        intent.putExtra("version",version);
         startActivity(intent);
+
     }
+
 }
