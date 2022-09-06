@@ -13,6 +13,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
         android:onClick="itemOnClick"
+        android:fontFamily="@font/noorehuda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

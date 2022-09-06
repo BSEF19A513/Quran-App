@@ -27,7 +27,7 @@ public class QuranRecyclerAdapter extends RecyclerView.Adapter<QuranRecyclerAdap
     public QuranRecyclerAdapter.MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.surah_name_customize, parent, false);
+                .inflate(R.layout.quran_text_customize, parent, false);
         return new MyVH(itemView);
     }
 
@@ -41,7 +41,7 @@ public class QuranRecyclerAdapter extends RecyclerView.Adapter<QuranRecyclerAdap
         TextView surahname;
         public MyVH(@NonNull View itemView) {
             super(itemView);
-            surahname = itemView.findViewById(R.id.surahnameview);
+            surahname = itemView.findViewById(R.id.qurantextview);
         }
     }
 }

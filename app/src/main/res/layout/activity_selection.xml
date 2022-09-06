@@ -1,40 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer"
+    tools:openDrawer="start"
     tools:context=".SelectionActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="392dp"
-        android:text="List View"
-        android:textAlignment="center"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:background="@drawable/button_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="listBtnOnClick"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="268dp"
-        android:textAlignment="center"
-        android:textSize="15dp"
-        android:background="@drawable/button_default"
-        android:textColor="@color/black"
-        android:text="Recycler View"
-        android:onClick="recyclerBtnOnClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/color_default"
+            app:title="Quran App"
+            app:titleTextColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".SelectionActivity">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="100dp"
+                android:layout_gravity="center"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:text="''Recite the Quran for on the Day of Resurrection it will come as an intercessor for those who recite it.''">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="65dp"
+                android:text="Sahih Muslim: 804 (1874)"
+                android:textColor="@color/black">
+
+            </TextView>
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="150dp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:background="@drawable/button_default"
+                android:textColor="@color/black"
+                android:text="Recycler View"
+                android:onClick="recyclerBtnOnClick" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="List View"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_default"
+                android:onClick="listBtnOnClick" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

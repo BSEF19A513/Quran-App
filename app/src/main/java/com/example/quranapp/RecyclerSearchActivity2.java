@@ -104,4 +104,8 @@ public class RecyclerSearchActivity2 extends AppCompatActivity {
         recyclerViewQuran.setLayoutManager(layoutManager);
         recyclerViewQuran.setAdapter(adapter);
     }
+    public void surahOnClick(View view)
+    {
+        ;
+    }
 }
